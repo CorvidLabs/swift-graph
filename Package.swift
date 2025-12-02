@@ -21,19 +21,10 @@ let package = Package(
         .package(url: "https://github.com/swiftlang/swift-docc-plugin", from: "1.4.3")
     ],
     targets: [
-        .target(
-            name: "Graph",
-            dependencies: [],
-            swiftSettings: [
-                .enableUpcomingFeature("StrictConcurrency")
-            ]
-        ),
+        .target(name: "Graph"),
         .testTarget(
             name: "GraphTests",
-            dependencies: ["Graph"],
-            swiftSettings: [
-                .enableUpcomingFeature("StrictConcurrency")
-            ]
+            dependencies: ["Graph"]
         )
     ]
 )
