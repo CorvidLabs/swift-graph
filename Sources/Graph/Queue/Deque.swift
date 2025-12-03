@@ -7,9 +7,11 @@ public struct Deque<Element>: Sendable where Element: Sendable {
         self.elements = []
     }
 
-    /// Creates a deque with the given elements
-    ///
-    /// - Parameter elements: Elements to add to the deque
+    /**
+     Creates a deque with the given elements
+
+     - Parameter elements: Elements to add to the deque
+     */
     public init<S: Sequence>(_ elements: S) where S.Element == Element {
         self.elements = Array(elements)
     }
@@ -34,23 +36,29 @@ public struct Deque<Element>: Sendable where Element: Sendable {
         elements.last
     }
 
-    /// Adds an element to the front of the deque
-    ///
-    /// - Parameter element: The element to add
+    /**
+     Adds an element to the front of the deque
+
+     - Parameter element: The element to add
+     */
     public mutating func pushFront(_ element: Element) {
         elements.insert(element, at: 0)
     }
 
-    /// Adds an element to the back of the deque
-    ///
-    /// - Parameter element: The element to add
+    /**
+     Adds an element to the back of the deque
+
+     - Parameter element: The element to add
+     */
     public mutating func pushBack(_ element: Element) {
         elements.append(element)
     }
 
-    /// Removes and returns the element at the front
-    ///
-    /// - Returns: The front element, or nil if the deque is empty
+    /**
+     Removes and returns the element at the front
+
+     - Returns: The front element, or nil if the deque is empty
+     */
     @discardableResult
     public mutating func popFront() -> Element? {
         guard !isEmpty else {
@@ -59,9 +67,11 @@ public struct Deque<Element>: Sendable where Element: Sendable {
         return elements.removeFirst()
     }
 
-    /// Removes and returns the element at the back
-    ///
-    /// - Returns: The back element, or nil if the deque is empty
+    /**
+     Removes and returns the element at the back
+
+     - Returns: The back element, or nil if the deque is empty
+     */
     @discardableResult
     public mutating func popBack() -> Element? {
         guard !isEmpty else {
@@ -70,10 +80,12 @@ public struct Deque<Element>: Sendable where Element: Sendable {
         return elements.removeLast()
     }
 
-    /// Returns the element at the specified index
-    ///
-    /// - Parameter index: The index of the element
-    /// - Returns: The element at the index
+    /**
+     Returns the element at the specified index
+
+     - Parameter index: The index of the element
+     - Returns: The element at the index
+     */
     public subscript(index: Int) -> Element {
         get {
             elements[index]

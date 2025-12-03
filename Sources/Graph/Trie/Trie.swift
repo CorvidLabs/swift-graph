@@ -7,9 +7,11 @@ public struct Trie<Element: Hashable>: Sendable where Element: Sendable {
         self.root = TrieNode()
     }
 
-    /// Creates a trie with the given sequences
-    ///
-    /// - Parameter sequences: Sequences to insert into the trie
+    /**
+     Creates a trie with the given sequences
+
+     - Parameter sequences: Sequences to insert into the trie
+     */
     public init<S: Sequence, T: Sequence>(_ sequences: S) where S.Element == T, T.Element == Element {
         self.init()
         for sequence in sequences {
@@ -17,9 +19,11 @@ public struct Trie<Element: Hashable>: Sendable where Element: Sendable {
         }
     }
 
-    /// Inserts a sequence into the trie
-    ///
-    /// - Parameter sequence: The sequence to insert
+    /**
+     Inserts a sequence into the trie
+
+     - Parameter sequence: The sequence to insert
+     */
     public func insert<S: Sequence>(_ sequence: S) where S.Element == Element {
         var currentNode = root
         for element in sequence {
@@ -28,10 +32,12 @@ public struct Trie<Element: Hashable>: Sendable where Element: Sendable {
         currentNode.isTerminating = true
     }
 
-    /// Checks if the trie contains a sequence
-    ///
-    /// - Parameter sequence: The sequence to search for
-    /// - Returns: True if the sequence exists in the trie
+    /**
+     Checks if the trie contains a sequence
+
+     - Parameter sequence: The sequence to search for
+     - Returns: True if the sequence exists in the trie
+     */
     public func contains<S: Sequence>(_ sequence: S) -> Bool where S.Element == Element {
         var currentNode = root
         for element in sequence {
@@ -43,10 +49,12 @@ public struct Trie<Element: Hashable>: Sendable where Element: Sendable {
         return currentNode.isTerminating
     }
 
-    /// Checks if any sequence in the trie starts with the given prefix
-    ///
-    /// - Parameter prefix: The prefix to search for
-    /// - Returns: True if any sequence starts with the prefix
+    /**
+     Checks if any sequence in the trie starts with the given prefix
+
+     - Parameter prefix: The prefix to search for
+     - Returns: True if any sequence starts with the prefix
+     */
     public func hasPrefix<S: Sequence>(_ prefix: S) -> Bool where S.Element == Element {
         var currentNode = root
         for element in prefix {
@@ -58,10 +66,12 @@ public struct Trie<Element: Hashable>: Sendable where Element: Sendable {
         return true
     }
 
-    /// Returns all sequences that start with the given prefix
-    ///
-    /// - Parameter prefix: The prefix to search for
-    /// - Returns: Array of sequences that start with the prefix
+    /**
+     Returns all sequences that start with the given prefix
+
+     - Parameter prefix: The prefix to search for
+     - Returns: Array of sequences that start with the prefix
+     */
     public func sequences<S: Sequence>(withPrefix prefix: S) -> [[Element]] where S.Element == Element {
         var currentNode = root
         var prefixArray: [Element] = []
@@ -94,10 +104,12 @@ public struct Trie<Element: Hashable>: Sendable where Element: Sendable {
         return results
     }
 
-    /// Removes a sequence from the trie
-    ///
-    /// - Parameter sequence: The sequence to remove
-    /// - Returns: True if the sequence was found and removed
+    /**
+     Removes a sequence from the trie
+
+     - Parameter sequence: The sequence to remove
+     - Returns: True if the sequence was found and removed
+     */
     @discardableResult
     public func remove<S: Sequence>(_ sequence: S) -> Bool where S.Element == Element {
         remove(sequence, from: root)
@@ -161,9 +173,11 @@ public struct Trie<Element: Hashable>: Sendable where Element: Sendable {
 // MARK: - String-specific extensions
 
 extension Trie where Element == Character {
-    /// Creates a trie from an array of strings
-    ///
-    /// - Parameter strings: Strings to insert into the trie
+    /**
+     Creates a trie from an array of strings
+
+     - Parameter strings: Strings to insert into the trie
+     */
     public init(_ strings: [String]) {
         self.init()
         for string in strings {
@@ -171,42 +185,52 @@ extension Trie where Element == Character {
         }
     }
 
-    /// Inserts a string into the trie
-    ///
-    /// - Parameter string: The string to insert
+    /**
+     Inserts a string into the trie
+
+     - Parameter string: The string to insert
+     */
     public func insert(_ string: String) {
         insert(Array(string))
     }
 
-    /// Checks if the trie contains a string
-    ///
-    /// - Parameter string: The string to search for
-    /// - Returns: True if the string exists in the trie
+    /**
+     Checks if the trie contains a string
+
+     - Parameter string: The string to search for
+     - Returns: True if the string exists in the trie
+     */
     public func contains(_ string: String) -> Bool {
         contains(Array(string))
     }
 
-    /// Checks if any string in the trie starts with the given prefix
-    ///
-    /// - Parameter prefix: The prefix to search for
-    /// - Returns: True if any string starts with the prefix
+    /**
+     Checks if any string in the trie starts with the given prefix
+
+     - Parameter prefix: The prefix to search for
+     - Returns: True if any string starts with the prefix
+     */
     public func hasPrefix(_ prefix: String) -> Bool {
         hasPrefix(Array(prefix))
     }
 
-    /// Returns all strings that start with the given prefix
-    ///
-    /// - Parameter prefix: The prefix to search for
-    /// - Returns: Array of strings that start with the prefix
+    /**
+     Returns all strings that start with the given prefix
+
+     - Parameter prefix: The prefix to search for
+     - Returns: Array of strings that start with the prefix
+     */
     public func strings(withPrefix prefix: String) -> [String] {
         sequences(withPrefix: Array(prefix))
             .map { String($0) }
     }
 
-    /// Removes a string from the trie
-    ///
-    /// - Parameter string: The string to remove
-    /// - Returns: True if the string was found and removed
+    /**
+     Removes a string from the trie
+
+     - Parameter string: The string to remove
+     - Returns: True if the string was found and removed
+     */
     @discardableResult
     public func remove(_ string: String) -> Bool {
         remove(Array(string))

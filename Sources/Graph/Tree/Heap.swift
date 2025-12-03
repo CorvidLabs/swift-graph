@@ -9,19 +9,23 @@ public struct Heap<Element: Comparable>: Sendable where Element: Sendable {
     private var elements: [Element]
     private let type: HeapType
 
-    /// Creates an empty heap
-    ///
-    /// - Parameter type: The type of heap (min or max)
+    /**
+     Creates an empty heap
+
+     - Parameter type: The type of heap (min or max)
+     */
     public init(type: HeapType = .minHeap) {
         self.elements = []
         self.type = type
     }
 
-    /// Creates a heap from a sequence of elements
-    ///
-    /// - Parameters:
-    ///   - elements: Elements to add to the heap
-    ///   - type: The type of heap (min or max)
+    /**
+     Creates a heap from a sequence of elements
+
+     - Parameters:
+       - elements: Elements to add to the heap
+       - type: The type of heap (min or max)
+     */
     public init<S: Sequence>(_ elements: S, type: HeapType = .minHeap) where S.Element == Element {
         self.elements = Array(elements)
         self.type = type
@@ -43,17 +47,21 @@ public struct Heap<Element: Comparable>: Sendable where Element: Sendable {
         elements.first
     }
 
-    /// Inserts an element into the heap
-    ///
-    /// - Parameter element: The element to insert
+    /**
+     Inserts an element into the heap
+
+     - Parameter element: The element to insert
+     */
     public mutating func insert(_ element: Element) {
         elements.append(element)
         siftUp(from: elements.count - 1)
     }
 
-    /// Removes and returns the top element
-    ///
-    /// - Returns: The top element, or nil if the heap is empty
+    /**
+     Removes and returns the top element
+
+     - Returns: The top element, or nil if the heap is empty
+     */
     @discardableResult
     public mutating func remove() -> Element? {
         guard !isEmpty else {
@@ -75,10 +83,12 @@ public struct Heap<Element: Comparable>: Sendable where Element: Sendable {
         elements.removeAll()
     }
 
-    /// Replaces the top element with a new element
-    ///
-    /// - Parameter element: The new element
-    /// - Returns: The previous top element, or nil if the heap was empty
+    /**
+     Replaces the top element with a new element
+
+     - Parameter element: The new element
+     - Returns: The previous top element, or nil if the heap was empty
+     */
     @discardableResult
     public mutating func replace(with element: Element) -> Element? {
         guard !isEmpty else {

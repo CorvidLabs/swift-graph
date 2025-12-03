@@ -18,9 +18,11 @@ public struct BinarySearchTree<Element: Comparable>: Sendable where Element: Sen
         self.root = nil
     }
 
-    /// Creates a binary search tree with the given elements
-    ///
-    /// - Parameter elements: Elements to insert into the tree
+    /**
+     Creates a binary search tree with the given elements
+
+     - Parameter elements: Elements to insert into the tree
+     */
     public init<S: Sequence>(_ elements: S) where S.Element == Element {
         self.init()
         for element in elements {
@@ -57,9 +59,11 @@ public struct BinarySearchTree<Element: Comparable>: Sendable where Element: Sen
         return 1 + Swift.max(height(of: node.left), height(of: node.right))
     }
 
-    /// Inserts an element into the tree
-    ///
-    /// - Parameter element: The element to insert
+    /**
+     Inserts an element into the tree
+
+     - Parameter element: The element to insert
+     */
     public mutating func insert(_ element: Element) {
         root = insert(element, into: root)
     }
@@ -79,10 +83,12 @@ public struct BinarySearchTree<Element: Comparable>: Sendable where Element: Sen
         return node
     }
 
-    /// Searches for an element in the tree
-    ///
-    /// - Parameter element: The element to search for
-    /// - Returns: True if the element exists in the tree
+    /**
+     Searches for an element in the tree
+
+     - Parameter element: The element to search for
+     - Returns: True if the element exists in the tree
+     */
     public func contains(_ element: Element) -> Bool {
         search(element, in: root) != nil
     }
@@ -101,10 +107,12 @@ public struct BinarySearchTree<Element: Comparable>: Sendable where Element: Sen
         }
     }
 
-    /// Removes an element from the tree
-    ///
-    /// - Parameter element: The element to remove
-    /// - Returns: True if the element was found and removed
+    /**
+     Removes an element from the tree
+
+     - Parameter element: The element to remove
+     - Returns: True if the element was found and removed
+     */
     @discardableResult
     public mutating func remove(_ element: Element) -> Bool {
         let initialCount = count
@@ -156,9 +164,11 @@ public struct BinarySearchTree<Element: Comparable>: Sendable where Element: Sen
         return current
     }
 
-    /// Returns the minimum element in the tree
-    ///
-    /// - Returns: The minimum element, or nil if the tree is empty
+    /**
+     Returns the minimum element in the tree
+
+     - Returns: The minimum element, or nil if the tree is empty
+     */
     public func min() -> Element? {
         guard let root = root else {
             return nil
@@ -166,9 +176,11 @@ public struct BinarySearchTree<Element: Comparable>: Sendable where Element: Sen
         return findMin(in: root).value
     }
 
-    /// Returns the maximum element in the tree
-    ///
-    /// - Returns: The maximum element, or nil if the tree is empty
+    /**
+     Returns the maximum element in the tree
+
+     - Returns: The maximum element, or nil if the tree is empty
+     */
     public func max() -> Element? {
         guard let root = root else {
             return nil
@@ -180,9 +192,11 @@ public struct BinarySearchTree<Element: Comparable>: Sendable where Element: Sen
         return current.value
     }
 
-    /// Performs in-order traversal
-    ///
-    /// - Returns: Array of elements in sorted order
+    /**
+     Performs in-order traversal
+
+     - Returns: Array of elements in sorted order
+     */
     public func inOrder() -> [Element] {
         inOrder(from: root)
     }
@@ -194,9 +208,11 @@ public struct BinarySearchTree<Element: Comparable>: Sendable where Element: Sen
         return inOrder(from: node.left) + [node.value] + inOrder(from: node.right)
     }
 
-    /// Performs pre-order traversal
-    ///
-    /// - Returns: Array of elements in pre-order
+    /**
+     Performs pre-order traversal
+
+     - Returns: Array of elements in pre-order
+     */
     public func preOrder() -> [Element] {
         preOrder(from: root)
     }
@@ -208,9 +224,11 @@ public struct BinarySearchTree<Element: Comparable>: Sendable where Element: Sen
         return [node.value] + preOrder(from: node.left) + preOrder(from: node.right)
     }
 
-    /// Performs post-order traversal
-    ///
-    /// - Returns: Array of elements in post-order
+    /**
+     Performs post-order traversal
+
+     - Returns: Array of elements in post-order
+     */
     public func postOrder() -> [Element] {
         postOrder(from: root)
     }

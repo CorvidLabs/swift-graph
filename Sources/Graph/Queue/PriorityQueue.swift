@@ -2,18 +2,22 @@
 public struct PriorityQueue<Element: Comparable>: Sendable where Element: Sendable {
     private var heap: Heap<Element>
 
-    /// Creates an empty priority queue
-    ///
-    /// - Parameter isMinQueue: If true, creates a min-priority queue; otherwise, creates a max-priority queue
+    /**
+     Creates an empty priority queue
+
+     - Parameter isMinQueue: If true, creates a min-priority queue; otherwise, creates a max-priority queue
+     */
     public init(isMinQueue: Bool = true) {
         self.heap = Heap(type: isMinQueue ? .minHeap : .maxHeap)
     }
 
-    /// Creates a priority queue from a sequence of elements
-    ///
-    /// - Parameters:
-    ///   - elements: Elements to add to the queue
-    ///   - isMinQueue: If true, creates a min-priority queue; otherwise, creates a max-priority queue
+    /**
+     Creates a priority queue from a sequence of elements
+
+     - Parameters:
+       - elements: Elements to add to the queue
+       - isMinQueue: If true, creates a min-priority queue; otherwise, creates a max-priority queue
+     */
     public init<S: Sequence>(_ elements: S, isMinQueue: Bool = true) where S.Element == Element {
         self.heap = Heap(elements, type: isMinQueue ? .minHeap : .maxHeap)
     }
@@ -33,16 +37,20 @@ public struct PriorityQueue<Element: Comparable>: Sendable where Element: Sendab
         heap.peek
     }
 
-    /// Inserts an element into the queue
-    ///
-    /// - Parameter element: The element to insert
+    /**
+     Inserts an element into the queue
+
+     - Parameter element: The element to insert
+     */
     public mutating func enqueue(_ element: Element) {
         heap.insert(element)
     }
 
-    /// Removes and returns the highest priority element
-    ///
-    /// - Returns: The highest priority element, or nil if the queue is empty
+    /**
+     Removes and returns the highest priority element
+
+     - Returns: The highest priority element, or nil if the queue is empty
+     */
     @discardableResult
     public mutating func dequeue() -> Element? {
         heap.remove()

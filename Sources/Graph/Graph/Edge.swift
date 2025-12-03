@@ -9,12 +9,14 @@ public struct Edge<Vertex: Hashable>: Sendable where Vertex: Sendable {
     /// The weight of the edge (nil for unweighted graphs)
     public let weight: Double?
 
-    /// Creates a new edge
-    ///
-    /// - Parameters:
-    ///   - source: The source vertex
-    ///   - destination: The destination vertex
-    ///   - weight: Optional weight of the edge
+    /**
+     Creates a new edge
+
+     - Parameters:
+       - source: The source vertex
+       - destination: The destination vertex
+       - weight: Optional weight of the edge
+     */
     public init(
         source: Vertex,
         destination: Vertex,

@@ -11,19 +11,23 @@ public enum BinaryTree<Element>: Sendable where Element: Sendable {
         self = .empty
     }
 
-    /// Creates a binary tree with a single value
-    ///
-    /// - Parameter value: The value for the root node
+    /**
+     Creates a binary tree with a single value
+
+     - Parameter value: The value for the root node
+     */
     public init(value: Element) {
         self = .node(value, left: .empty, right: .empty)
     }
 
-    /// Creates a binary tree with a value and left and right subtrees
-    ///
-    /// - Parameters:
-    ///   - value: The value for the root node
-    ///   - left: The left subtree
-    ///   - right: The right subtree
+    /**
+     Creates a binary tree with a value and left and right subtrees
+
+     - Parameters:
+       - value: The value for the root node
+       - left: The left subtree
+       - right: The right subtree
+     */
     public init(value: Element, left: BinaryTree<Element>, right: BinaryTree<Element>) {
         self = .node(value, left: left, right: right)
     }
@@ -88,9 +92,11 @@ public enum BinaryTree<Element>: Sendable where Element: Sendable {
         }
     }
 
-    /// Performs in-order traversal
-    ///
-    /// - Returns: Array of elements in in-order
+    /**
+     Performs in-order traversal
+
+     - Returns: Array of elements in in-order
+     */
     public func inOrder() -> [Element] {
         switch self {
         case .empty:
@@ -100,9 +106,11 @@ public enum BinaryTree<Element>: Sendable where Element: Sendable {
         }
     }
 
-    /// Performs pre-order traversal
-    ///
-    /// - Returns: Array of elements in pre-order
+    /**
+     Performs pre-order traversal
+
+     - Returns: Array of elements in pre-order
+     */
     public func preOrder() -> [Element] {
         switch self {
         case .empty:
@@ -112,9 +120,11 @@ public enum BinaryTree<Element>: Sendable where Element: Sendable {
         }
     }
 
-    /// Performs post-order traversal
-    ///
-    /// - Returns: Array of elements in post-order
+    /**
+     Performs post-order traversal
+
+     - Returns: Array of elements in post-order
+     */
     public func postOrder() -> [Element] {
         switch self {
         case .empty:
@@ -124,9 +134,11 @@ public enum BinaryTree<Element>: Sendable where Element: Sendable {
         }
     }
 
-    /// Performs level-order (breadth-first) traversal
-    ///
-    /// - Returns: Array of elements in level-order
+    /**
+     Performs level-order (breadth-first) traversal
+
+     - Returns: Array of elements in level-order
+     */
     public func levelOrder() -> [Element] {
         var result: [Element] = []
         var queue: [BinaryTree<Element>] = [self]
@@ -147,10 +159,12 @@ public enum BinaryTree<Element>: Sendable where Element: Sendable {
         return result
     }
 
-    /// Maps the tree's elements to a new type
-    ///
-    /// - Parameter transform: The transformation function
-    /// - Returns: A new tree with transformed elements
+    /**
+     Maps the tree's elements to a new type
+
+     - Parameter transform: The transformation function
+     - Returns: A new tree with transformed elements
+     */
     public func map<T>(_ transform: (Element) -> T) -> BinaryTree<T> where T: Sendable {
         switch self {
         case .empty:

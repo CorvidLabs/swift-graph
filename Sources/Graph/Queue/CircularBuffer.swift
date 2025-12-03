@@ -8,10 +8,12 @@ public struct CircularBuffer<Element>: Sendable where Element: Sendable {
     /// The maximum number of elements the buffer can hold
     public let capacity: Int
 
-    /// Creates a circular buffer with the specified capacity
-    ///
-    /// - Parameter capacity: The maximum number of elements
-    /// - Throws: QueueError if capacity is less than 1
+    /**
+     Creates a circular buffer with the specified capacity
+
+     - Parameter capacity: The maximum number of elements
+     - Throws: QueueError if capacity is less than 1
+     */
     public init(capacity: Int) throws {
         guard capacity > 0 else {
             throw StructError.queueError(.invalidCapacity)
@@ -61,10 +63,12 @@ public struct CircularBuffer<Element>: Sendable where Element: Sendable {
         return buffer[index]
     }
 
-    /// Writes an element to the buffer
-    ///
-    /// - Parameter element: The element to write
-    /// - Returns: True if the element was written, false if the buffer is full
+    /**
+     Writes an element to the buffer
+
+     - Parameter element: The element to write
+     - Returns: True if the element was written, false if the buffer is full
+     */
     @discardableResult
     public mutating func write(_ element: Element) -> Bool {
         guard !isFull else {
@@ -77,9 +81,11 @@ public struct CircularBuffer<Element>: Sendable where Element: Sendable {
         return true
     }
 
-    /// Reads and removes an element from the buffer
-    ///
-    /// - Returns: The element at the front, or nil if the buffer is empty
+    /**
+     Reads and removes an element from the buffer
+
+     - Returns: The element at the front, or nil if the buffer is empty
+     */
     @discardableResult
     public mutating func read() -> Element? {
         guard !isEmpty else {
@@ -93,9 +99,11 @@ public struct CircularBuffer<Element>: Sendable where Element: Sendable {
         return element
     }
 
-    /// Overwrites the oldest element if the buffer is full
-    ///
-    /// - Parameter element: The element to write
+    /**
+     Overwrites the oldest element if the buffer is full
+
+     - Parameter element: The element to write
+     */
     public mutating func overwrite(_ element: Element) {
         if isFull {
             read()

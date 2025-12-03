@@ -1,4 +1,6 @@
-/// A generic graph data structure supporting both directed and undirected graphs with optional weighted edges
+/**
+ A generic graph data structure supporting both directed and undirected graphs with optional weighted edges
+ */
 public struct Graph<Vertex: Hashable>: Sendable where Vertex: Sendable {
     /// The type of graph
     public enum GraphType: Sendable {
@@ -12,9 +14,11 @@ public struct Graph<Vertex: Hashable>: Sendable where Vertex: Sendable {
     /// Adjacency list representation of the graph
     internal var adjacencyList: [Vertex: [Edge<Vertex>]]
 
-    /// Creates a new graph
-    ///
-    /// - Parameter type: The type of graph (directed or undirected)
+    /**
+     Creates a new graph
+
+     - Parameter type: The type of graph (directed or undirected)
+     */
     public init(type: GraphType = .directed) {
         self.type = type
         self.adjacencyList = [:]
@@ -45,20 +49,24 @@ public struct Graph<Vertex: Hashable>: Sendable where Vertex: Sendable {
         }
     }
 
-    /// Adds a vertex to the graph
-    ///
-    /// - Parameter vertex: The vertex to add
+    /**
+     Adds a vertex to the graph
+
+     - Parameter vertex: The vertex to add
+     */
     public mutating func addVertex(_ vertex: Vertex) {
         adjacencyList[vertex] = adjacencyList[vertex] ?? []
     }
 
-    /// Adds an edge to the graph
-    ///
-    /// - Parameters:
-    ///   - source: The source vertex
-    ///   - destination: The destination vertex
-    ///   - weight: Optional weight of the edge
-    /// - Throws: GraphError if vertices don't exist
+    /**
+     Adds an edge to the graph
+
+     - Parameters:
+       - source: The source vertex
+       - destination: The destination vertex
+       - weight: Optional weight of the edge
+     - Throws: GraphError if vertices don't exist
+     */
     public mutating func addEdge(
         from source: Vertex,
         to destination: Vertex,
@@ -78,47 +86,57 @@ public struct Graph<Vertex: Hashable>: Sendable where Vertex: Sendable {
         }
     }
 
-    /// Returns the edges from a given vertex
-    ///
-    /// - Parameter vertex: The source vertex
-    /// - Returns: Array of edges from the vertex
+    /**
+     Returns the edges from a given vertex
+
+     - Parameter vertex: The source vertex
+     - Returns: Array of edges from the vertex
+     */
     public func edges(from vertex: Vertex) -> [Edge<Vertex>] {
         adjacencyList[vertex] ?? []
     }
 
-    /// Returns the weight of an edge between two vertices
-    ///
-    /// - Parameters:
-    ///   - source: The source vertex
-    ///   - destination: The destination vertex
-    /// - Returns: The weight of the edge, or nil if no edge exists
+    /**
+     Returns the weight of an edge between two vertices
+
+     - Parameters:
+       - source: The source vertex
+       - destination: The destination vertex
+     - Returns: The weight of the edge, or nil if no edge exists
+     */
     public func weight(from source: Vertex, to destination: Vertex) -> Double? {
         adjacencyList[source]?
             .first(where: { $0.destination == destination })?
             .weight
     }
 
-    /// Checks if there is an edge between two vertices
-    ///
-    /// - Parameters:
-    ///   - source: The source vertex
-    ///   - destination: The destination vertex
-    /// - Returns: True if an edge exists, false otherwise
+    /**
+     Checks if there is an edge between two vertices
+
+     - Parameters:
+       - source: The source vertex
+       - destination: The destination vertex
+     - Returns: True if an edge exists, false otherwise
+     */
     public func hasEdge(from source: Vertex, to destination: Vertex) -> Bool {
         adjacencyList[source]?.contains(where: { $0.destination == destination }) ?? false
     }
 
-    /// Returns the neighbors of a given vertex
-    ///
-    /// - Parameter vertex: The vertex
-    /// - Returns: Array of neighboring vertices
+    /**
+     Returns the neighbors of a given vertex
+
+     - Parameter vertex: The vertex
+     - Returns: Array of neighboring vertices
+     */
     public func neighbors(of vertex: Vertex) -> [Vertex] {
         edges(from: vertex).map(\.destination)
     }
 
-    /// Removes a vertex from the graph
-    ///
-    /// - Parameter vertex: The vertex to remove
+    /**
+     Removes a vertex from the graph
+
+     - Parameter vertex: The vertex to remove
+     */
     public mutating func removeVertex(_ vertex: Vertex) {
         adjacencyList.removeValue(forKey: vertex)
 
@@ -128,11 +146,13 @@ public struct Graph<Vertex: Hashable>: Sendable where Vertex: Sendable {
         }
     }
 
-    /// Removes an edge from the graph
-    ///
-    /// - Parameters:
-    ///   - source: The source vertex
-    ///   - destination: The destination vertex
+    /**
+     Removes an edge from the graph
+
+     - Parameters:
+       - source: The source vertex
+       - destination: The destination vertex
+     */
     public mutating func removeEdge(from source: Vertex, to destination: Vertex) {
         adjacencyList[source]?.removeAll { $0.destination == destination }
 

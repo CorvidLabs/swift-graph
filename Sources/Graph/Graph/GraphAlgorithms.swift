@@ -1,9 +1,11 @@
 /// Algorithms for graph traversal and analysis
 extension Graph {
-    /// Performs breadth-first search starting from a given vertex
-    ///
-    /// - Parameter start: The starting vertex
-    /// - Returns: Array of vertices in BFS order
+    /**
+     Performs breadth-first search starting from a given vertex
+
+     - Parameter start: The starting vertex
+     - Returns: Array of vertices in BFS order
+     */
     public func breadthFirstSearch(from start: Vertex) -> [Vertex] {
         guard adjacencyList[start] != nil else {
             return []
@@ -30,10 +32,12 @@ extension Graph {
         return result
     }
 
-    /// Performs depth-first search starting from a given vertex
-    ///
-    /// - Parameter start: The starting vertex
-    /// - Returns: Array of vertices in DFS order
+    /**
+     Performs depth-first search starting from a given vertex
+
+     - Parameter start: The starting vertex
+     - Returns: Array of vertices in DFS order
+     */
     public func depthFirstSearch(from start: Vertex) -> [Vertex] {
         guard adjacencyList[start] != nil else {
             return []
@@ -59,13 +63,15 @@ extension Graph {
         return result
     }
 
-    /// Finds the shortest path between two vertices using Dijkstra's algorithm
-    ///
-    /// - Parameters:
-    ///   - start: The starting vertex
-    ///   - end: The destination vertex
-    /// - Returns: A tuple containing the path and total distance, or nil if no path exists
-    /// - Throws: GraphError if vertices don't exist
+    /**
+     Finds the shortest path between two vertices using Dijkstra's algorithm
+
+     - Parameters:
+       - start: The starting vertex
+       - end: The destination vertex
+     - Returns: A tuple containing the path and total distance, or nil if no path exists
+     - Throws: GraphError if vertices don't exist
+     */
     public func shortestPath(
         from start: Vertex,
         to end: Vertex
@@ -137,9 +143,11 @@ extension Graph {
         return (path: path, distance: finalDistance)
     }
 
-    /// Detects if the graph contains a cycle
-    ///
-    /// - Returns: True if the graph contains a cycle, false otherwise
+    /**
+     Detects if the graph contains a cycle
+
+     - Returns: True if the graph contains a cycle, false otherwise
+     */
     public func hasCycle() -> Bool {
         var visited: Set<Vertex> = []
         var recursionStack: Set<Vertex> = []
@@ -173,10 +181,12 @@ extension Graph {
         return false
     }
 
-    /// Performs topological sort on a directed acyclic graph
-    ///
-    /// - Returns: Array of vertices in topological order
-    /// - Throws: GraphError if the graph contains a cycle
+    /**
+     Performs topological sort on a directed acyclic graph
+
+     - Returns: Array of vertices in topological order
+     - Throws: GraphError if the graph contains a cycle
+     */
     public func topologicalSort() throws -> [Vertex] {
         guard type == .directed else {
             throw StructError.graphError(.invalidOperation)
