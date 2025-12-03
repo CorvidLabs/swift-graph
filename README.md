@@ -1,6 +1,7 @@
 # SwiftGraph
 
-[![CI](https://img.shields.io/github/actions/workflow/status/CorvidLabs/swift-graph/ci.yml?label=CI&branch=main)](https://github.com/CorvidLabs/swift-graph/actions/workflows/ci.yml)
+[![macOS](https://img.shields.io/github/actions/workflow/status/CorvidLabs/swift-graph/macOS.yml?label=macOS&branch=main)](https://github.com/CorvidLabs/swift-graph/actions/workflows/macOS.yml)
+[![Ubuntu](https://img.shields.io/github/actions/workflow/status/CorvidLabs/swift-graph/ubuntu.yml?label=Ubuntu&branch=main)](https://github.com/CorvidLabs/swift-graph/actions/workflows/ubuntu.yml)
 [![License](https://img.shields.io/github/license/CorvidLabs/swift-graph)](https://github.com/CorvidLabs/swift-graph/blob/main/LICENSE)
 [![Version](https://img.shields.io/github/v/release/CorvidLabs/swift-graph)](https://github.com/CorvidLabs/swift-graph/releases)
 
