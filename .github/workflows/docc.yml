@@ -21,10 +21,10 @@ jobs:
       - name: Build documentation
         run: |
           swift package --allow-writing-to-directory ./docs \
-            generate-documentation --target Struct \
+            generate-documentation --target Graph \
             --disable-indexing \
             --transform-for-static-hosting \
-            --hosting-base-path swift-struct \
+            --hosting-base-path swift-graph \
             --output-path ./docs
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3

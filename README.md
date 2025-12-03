@@ -13,7 +13,7 @@ A comprehensive collection of high-performance data structures implemented in pu
 - No external dependencies (except swift-docc-plugin for documentation)
 - Protocol-oriented design with modern Swift patterns
 - Comprehensive test coverage (75+ tests)
-- Full platform support: iOS 15+, macOS 12+, tvOS 15+, watchOS 8+, visionOS 1+
+- Full platform support: iOS 16+, macOS 13+, tvOS 16+, watchOS 9+, visionOS 1+
 
 ## Data Structures
 
@@ -277,4 +277,4 @@ Contributions are welcome! Please ensure all tests pass and add tests for new fu
 ## Requirements
 
 - Swift 6.0+
-- Platform support: iOS 15+, macOS 12+, tvOS 15+, watchOS 8+, visionOS 1+
+- Platform support: iOS 16+, macOS 13+, tvOS 16+, watchOS 9+, visionOS 1+
