@@ -5,6 +5,8 @@
 [![License](https://img.shields.io/github/license/CorvidLabs/swift-graph)](https://github.com/CorvidLabs/swift-graph/blob/main/LICENSE)
 [![Version](https://img.shields.io/github/v/release/CorvidLabs/swift-graph)](https://github.com/CorvidLabs/swift-graph/releases)
 
+> **Pre-1.0 Notice**: This library is under active development. The API may change between minor versions until 1.0.
+
 A comprehensive collection of high-performance data structures implemented in pure Swift 6 with strict concurrency support.
 
 ## Features
