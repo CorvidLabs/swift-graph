@@ -28,11 +28,7 @@
   "no_spec_change": false,
   "no_spec_change_rationale": null,
   "acceptance_criteria": [
-    "Strict SpecSync passes at advisory threshold 0; all four agents and Trust doctor pass; Swift build and all 75 tests pass; macOS",
-    "Linux",
-    "platform",
-    "API",
-    "and DocC boundaries remain intact"
+    "Strict SpecSync passes at advisory threshold 0; all four agents and Trust doctor pass; Swift build and all 75 tests pass; macOS, Linux, platform, API, and DocC boundaries remain intact"
   ],
   "selected_artifacts": [
     "context",
