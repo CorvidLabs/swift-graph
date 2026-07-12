@@ -1,0 +1,51 @@
+{
+  "schema_version": 1,
+  "id": "CHG-0001-adopt-specsync-5-0-1-and-trust-1-0-0-governance-for-the-swift-graph-library",
+  "slug": "adopt-specsync-5-0-1-and-trust-1-0-0-governance-for-the-swift-graph-library",
+  "title": "Adopt SpecSync 5.0.1 and Trust 1.0.0 governance for the Swift Graph library",
+  "description": "Adopt SpecSync 5.0.1 and Trust 1.0.0 governance for the Swift Graph library",
+  "kind": "migration",
+  "state": "draft",
+  "base_commit": "6081af755b535b68e214a7b034ae35359534a899",
+  "created_at": 1783886167,
+  "updated_at": 1783886176,
+  "affected_specs": [
+    "graph"
+  ],
+  "affected_paths": [
+    "Sources/",
+    "Tests/",
+    "Package.swift",
+    "fledge.toml",
+    ".github/",
+    ".specsync/",
+    "specs/",
+    ".trust.toml",
+    ".augur.toml",
+    ".attest.json",
+    "AGENTS.md"
+  ],
+  "no_spec_change": false,
+  "no_spec_change_rationale": null,
+  "acceptance_criteria": [
+    "Strict SpecSync passes at advisory threshold 0; all four agents and Trust doctor pass; Swift build and all 75 tests pass; macOS",
+    "Linux",
+    "platform",
+    "API",
+    "and DocC boundaries remain intact"
+  ],
+  "selected_artifacts": [
+    "context",
+    "research",
+    "design",
+    "plan",
+    "tasks",
+    "testing",
+    "docs"
+  ],
+  "dependencies": [],
+  "answers": {
+    "architecture_risk": "yes",
+    "public_contract": "no"
+  }
+}

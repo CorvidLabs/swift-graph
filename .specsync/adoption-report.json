@@ -1,0 +1,15 @@
+{
+  "bootstrap_policy": {
+    "base_commit": "6081af755b535b68e214a7b034ae35359534a899",
+    "digest": "17da9387d2f3e8e96682c32e539ea1f1797adbdbd784e02c47b0c608ada2b8a1",
+    "path": ".specsync/sdd.json"
+  },
+  "generated_at": 1783886072,
+  "requirements_needing_ids": [
+    {
+      "action": "review and assign one stable ID per durable requirement",
+      "path": "specs/graph/requirements.md",
+      "suggested_first_id": "REQ-graph-001"
+    }
+  ]
+}

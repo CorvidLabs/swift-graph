@@ -1,0 +1,5 @@
+[registry]
+name = "swift-graph-trust-wave9"
+
+[specs]
+graph = "specs/graph/graph.spec.md"
