@@ -8,4 +8,4 @@ artifact: tasks
 - [x] Preserve APIs, algorithms, platform CI, and DocC.
 - [x] Add requirements, agents, and Trust configuration.
 - [x] Build and pass all 75 tests.
-- [ ] Obtain authorized definition and closing approvals.
+- [x] Record the authorized definition approval and run local verification.
